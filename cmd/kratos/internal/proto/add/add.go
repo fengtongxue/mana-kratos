@@ -20,11 +20,12 @@ var CmdAdd = &cobra.Command{
 }
 
 func run(_ *cobra.Command, args []string) {
-	if len(args) == 0 {
-		fmt.Println("Please enter the proto file or directory")
+	if len(args) < 1 {
+		fmt.Println("Please enter the proto file or directory and baseUrl")
 		return
 	}
 	input := args[0]
+	baseUrl := args[1]
 	n := strings.LastIndex(input, "/")
 	if n == -1 {
 		fmt.Println("The proto path needs to be hierarchical.")
@@ -38,6 +39,7 @@ func run(_ *cobra.Command, args []string) {
 		Name:        fileName,
 		Path:        path,
 		Package:     pkgName,
+		BaseUrl:     baseUrl,
 		GoPackage:   goPackage(path),
 		JavaPackage: javaPackage(pkgName),
 		Service:     serviceName(fileName),

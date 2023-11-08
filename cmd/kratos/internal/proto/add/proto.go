@@ -11,6 +11,7 @@ type Proto struct {
 	Name        string
 	Path        string
 	Service     string
+	BaseUrl     string
 	Package     string
 	GoPackage   string
 	JavaPackage string
